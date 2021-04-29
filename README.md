@@ -47,3 +47,52 @@ components:
 •Metric Exporter介绍
 •Pushgateway
 •Alerting&Rule报警
+
+### Metrics types
+* Counters: 
+    * either go up, stay the same or be reset to 0
+* Gauges:
+    * either up or down, giving the current value at any given point in time
+* Histogram:
+    * 如：web服务器的请求response时间，请求response时间的分布情况
+    * prometheus_tsdb_compaction_chunk_range
+    * prometheus_tsdb_compaction_chunk_range_bucket{le="100"} 0
+    * ....
+    * prometheus_tsdb_compaction_chunk_range_bucket{le="6.5546e+07"} 780
+    * .....
+    * prometheus_tsdb_compaction_chunk_range_sum 1.15407798e+09
+    * prometheus_tsdb_compaction_chunk_range_count 780
+* Summary:
+    * 特定的bucket的数值取值的情况
+    * go_gc_duration_seconds{quantile="0"} 6.66e-05
+    * ......
+    * go_gc_duration_seconds{quantile="0.5"} 0.0003135 #中位数
+    * ......
+    * go_gc_duration_seconds{quantile="1"} 0.0043635
+    * go_gc_duration_seconds_sum 0.36068
+    * go_gc_duration_seconds_count 685
+
+
+eg. Ping应该是 Gauges
+ping_average_response_ms{environment="testing", host="telegraf", instance="telegraf:9273", job="telegraf", service_name="amazon", url="amazon.cn", version="2"}
+* Metric name: ping_average_response_ms
+* Labels: service_name="amazon"
+* Timestamp: see graph
+
+
+### PromQL Query
+* starts with a metric name. eg: ping_average_response_ms
+* Fileter with labels, label filters support four operators
+    * =
+    * !=
+    * =~ match regex
+    * !~ don't match regex
+    
+
+* eg. ping_average_response_ms{service_name="github"}
+* ping_average_response_ms{service_name!="github"}
+* ping_average_response_ms{service_name="amazon", url="amazon.cn"} #逗号表示and
+* ping_average_response_ms{url=~"^amazon.*"} #正则匹配
+* ping_average_response_ms{url="amazon", url！="amazon.cn"}
+* ping_average_response_ms{url=~"^amazon.*",url!="amazon.cn"}
+* ping_average_response_ms<100 #根据value过滤
