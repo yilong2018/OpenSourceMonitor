@@ -96,3 +96,8 @@ ping_average_response_ms{environment="testing", host="telegraf", instance="teleg
 * ping_average_response_ms{url="amazon", url！="amazon.cn"}
 * ping_average_response_ms{url=~"^amazon.*",url!="amazon.cn"}
 * ping_average_response_ms<100 #根据value过滤
+
+#### Range Vector & Instant Vector
+查询历史（范围）数据  &  常量（最新）数据
+* Range vector selector: ping_average_response_ms{job="telegraf"}[5m] #最近五分钟,秒s,小时h,天d...
+* Instant vector selector: ping_average_response_ms{service_name!="github"}
