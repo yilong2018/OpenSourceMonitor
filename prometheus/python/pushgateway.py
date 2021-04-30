@@ -7,4 +7,4 @@ g = Gauge(
     ['a', 'b'],
     registry=registry)
 g.labels(a='1', b='2').set_to_current_time()
-push_to_gateway('localhost:9091', job='job test', registry=registry)
+push_to_gateway('pushgateway:9091', job='job test', registry=registry)

@@ -45,6 +45,7 @@ services:
     hostname: python-exporter
     ports:
       - 9275:8000
+    command: python add.py
 
   pushgateway:
     image: prom/pushgateway:v1.4.0
