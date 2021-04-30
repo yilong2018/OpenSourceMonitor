@@ -97,7 +97,25 @@ ping_average_response_ms{environment="testing", host="telegraf", instance="teleg
 * ping_average_response_ms{url=~"^amazon.*",url!="amazon.cn"}
 * ping_average_response_ms<100 #根据value过滤
 
-#### Range Vector & Instant Vector
+### Range Vector & Instant Vector
 查询历史（范围）数据  &  常量（最新）数据
 * Range vector selector: ping_average_response_ms{job="telegraf"}[5m] #最近五分钟,秒s,小时h,天d...
 * Instant vector selector: ping_average_response_ms{service_name!="github"}
+接收速率计算：
+* 1分钟时间间隔取rate，算一个速率，单位为byte/sec
+    * rate(net_bytes_recv[1m])
+* 转换单位byte为bit/sec
+    * rate(net_bytes_recv[1m])*8
+
+### aggregation-Operators
+https://prometheus.io/docs/prometheus/latest/querying/operators/#aggregation-operators
+* sum()
+    * sum(ping_packets_received)
+    * 以service_name分类 sum(ping_packets_received) by(service_name)
+    * sum(ping_packets_received) by(service_name,host)
+* topk(n, tag)
+    * 最大的3个返回时间：topk(3,ping_maximum_response_ms)
+
+
+### Metric Exporter,Pushgateway
+metric exporter
