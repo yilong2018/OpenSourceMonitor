@@ -24,6 +24,18 @@ services:
       - ./prometheus:/etc/prometheus
     command: --config.file=/etc/prometheus/prometheus.yml
 
+  alertmanager:
+    image: prom/alertmanager:v0.21.0
+    restart: always
+    container_name: alertmanager
+    hostname: alertmanager
+    ports:
+      - 9093:9093
+    volumes: 
+      - ./alertmanager:/etc/alertmanager
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+
   host1:
     image: busybox:1.33.0
     restart: unless-stopped
