@@ -119,3 +119,13 @@ https://prometheus.io/docs/prometheus/latest/querying/operators/#aggregation-ope
 
 ### Metric Exporter,Pushgateway
 metric exporter
+注意 pushgateway，需要手动删除metric或者脚本删除更新，见说明
+http://github.com/prometheus/pushgateway 
+
+
+### Alert
+* inative： 未被触发
+* pending： evaluation检查满足条件，不够for设置的持续时间
+* firing： evalation 检查满足条件，够了for设置的持续时间
+https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
+
