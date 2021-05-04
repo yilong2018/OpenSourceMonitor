@@ -11,3 +11,13 @@ receivers:
         auth_identity: 16203670@qq.com
         auth_password: otfbfdbzdfgvbiff
         send_resolved: true
+    slack_configs:
+      - channel: "#alert-warn"
+        api_url: https://hooks.slack.com/services/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
+        title_link: http://192.168.5.15:9093/#/alerts
+        title: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        send_resolved: true
+      - channel: "#alert-urgent"
+        api_url: https://hooks.slack.com/services/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
+        send_resolved: true

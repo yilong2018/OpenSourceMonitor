@@ -131,3 +131,13 @@ https://prometheus.io/docs/prometheus/latest/configuration/configuration/#config
 
 #### alerting email config
 http://prometheus.io/docs/alerting/latest/configuration/#email_config
+
+
+### Slack alerting notification /mattermost(opensource)
+https://app.slack.com/client/T020VCWD6TD/C020EDKTK63
+Webhook URL:
+https://tpg-e8q3628.slack.com/apps/A0F7XDUAZ-incoming-webhooks?next_id=0
+
+* urgent: https://hooks.slack.com/services/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
+* warn: https://hooks.slack.com/services/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
+
