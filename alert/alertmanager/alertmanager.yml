@@ -4,3 +4,10 @@ route:
 receivers:
   - name: demo
     email_configs:
+      - to: 16203670@qq.com
+        from: 16203670@qq.com
+        smarthost: smtp.qq.com:587
+        auth_username: 16203670@qq.com
+        auth_identity: 16203670@qq.com
+        auth_password: otfbfdbzdfgvbiff
+        send_resolved: true

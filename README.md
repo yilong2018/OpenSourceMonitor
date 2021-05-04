@@ -129,3 +129,5 @@ http://github.com/prometheus/pushgateway
 * firing： evalation 检查满足条件，够了for设置的持续时间
 https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 
+#### alerting email config
+http://prometheus.io/docs/alerting/latest/configuration/#email_config
