@@ -15,9 +15,238 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 3,
   "links": [],
   "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.2.0",
+      "targets": [
+        {
+          "expr": "cpu_usage_system{cpu!=\"cpu-total\"}*100",
+          "interval": "",
+          "legendFormat": "{{cpu}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CPU",
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 9,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.2.0",
+      "targets": [
+        {
+          "expr": "cpu_usage_system{cpu=\"cpu-total\"}*100",
+          "interval": "",
+          "legendFormat": "CPU",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CPU Total",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 15,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.2.0",
+      "targets": [
+        {
+          "expr": "mem_used",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 200
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.2.0",
+      "targets": [
+        {
+          "expr": "ping_average_response_ms",
+          "interval": "",
+          "legendFormat": "{{url}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "type": "stat"
+    },
     {
       "aliasColors": {},
       "bars": false,
@@ -25,9 +254,10 @@
       "dashes": false,
       "datasource": null,
       "decimals": 2,
-      "description": "",
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "custom": {}
+        },
         "overrides": []
       },
       "fill": 1,
@@ -36,7 +266,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 6,
@@ -56,13 +286,12 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.2.0",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:302",
           "alias": "cpu",
           "color": "#F2495C",
           "fill": 0,
@@ -70,7 +299,6 @@
           "yaxis": 2
         },
         {
-          "$$hashKey": "object:309",
           "alias": "mem",
           "color": "#73BF69"
         }
@@ -80,16 +308,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "exemplar": true,
           "expr": "cpu_usage_system{cpu=\"cpu-total\"}*100",
           "interval": "",
           "legendFormat": "cpu",
           "refId": "A"
         },
         {
-          "exemplar": true,
           "expr": "mem_used",
-          "hide": false,
           "interval": "",
           "legendFormat": "mem",
           "refId": "B"
@@ -99,7 +324,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "CPU & Memory",
+      "title": "CPU/Memory",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -115,18 +340,16 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:282",
           "format": "bytes",
-          "label": "",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:283",
           "format": "percent",
-          "label": "",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": "0",
@@ -144,9 +367,12 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Test",
+      "description": "test",
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "custom": {},
+          "unit": "ms"
+        },
         "overrides": []
       },
       "fill": 1,
@@ -155,7 +381,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 2,
@@ -173,27 +399,31 @@
       },
       "lines": true,
       "linewidth": 1,
+      "links": [
+        {
+          "title": "test link",
+          "url": "http://test.com"
+        }
+      ],
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
+      "pluginVersion": "7.2.0",
+      "pointradius": 1,
+      "points": true,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {}
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "exemplar": true,
           "expr": "ping_average_response_ms",
-          "format": "time_series",
-          "instant": false,
           "interval": "",
-          "intervalFactor": 1,
           "legendFormat": "{{environment}}_{{url}}",
           "refId": "A"
         }
@@ -202,7 +432,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Ping Average Response Time",
+      "title": "Ping Average response Time",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -219,8 +449,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:93",
-          "decimals": 1,
+          "decimals": null,
           "format": "ms",
           "label": null,
           "logBase": 1,
@@ -229,7 +458,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:94",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -242,63 +470,10 @@
         "align": false,
         "alignLevel": null
       }
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 8
-      },
-      "id": 4,
-      "options": {
-        "showHeader": true
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "ping_packets_received",
-          "format": "table",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Ping Packets Received",
-      "type": "table"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 27,
+  "refresh": "1m",
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -310,7 +485,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "ping dashboard",
-  "uid": "lkUy_6rGz",
-  "version": 7
+  "title": "Ping Dashboard",
+  "uid": "mhwGd5TMz",
+  "version": 2
 }
