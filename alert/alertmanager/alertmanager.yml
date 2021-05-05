@@ -1,8 +1,16 @@
 route:
-  receiver: demo
+  receiver: email-default
+
+  routes:
+    - receiver: "slack-warn"
+      match:
+        severity: warn
+    - receiver: "slack-urgent"
+      match:
+        severity: urgent
 
 receivers:
-  - name: demo
+  - name: email-default
     email_configs:
       - to: 16203670@qq.com
         from: 16203670@qq.com
@@ -11,13 +19,17 @@ receivers:
         auth_identity: 16203670@qq.com
         auth_password: otfbfdbzdfgvbiff
         send_resolved: true
+  - name: slack-warn
     slack_configs:
       - channel: "#alert-warn"
         api_url: https://hooks.slack.com/services/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
         title_link: http://192.168.5.15:9093/#/alerts
-        title: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
         text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
         send_resolved: true
+  - name: slack-urgent
+    slack_configs:
       - channel: "#alert-urgent"
         api_url: https://hooks.slack.com/services/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
+        title_link: http://192.168.5.15:9093/#/alerts
+        text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
         send_resolved: true

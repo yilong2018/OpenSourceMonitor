@@ -141,3 +141,5 @@ https://tpg-e8q3628.slack.com/apps/A0F7XDUAZ-incoming-webhooks?next_id=0
 * urgent: https://hooks.slack.com/services/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
 * warn: https://hooks.slack.com/services/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
 
+### alerting route
+不同等级，发送给不同的receiver
