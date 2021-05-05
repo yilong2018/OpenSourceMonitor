@@ -143,3 +143,11 @@ https://tpg-e8q3628.slack.com/apps/A0F7XDUAZ-incoming-webhooks?next_id=0
 
 ### alerting route
 不同等级，发送给不同的receiver
+
+## Grafana
+### 图形界面中interval的设置
+* 首先在prometheus中查看采集数据的时间间隔
+    * ping_average_response_ms{url="host1"}[2m]，看到4条数据，表示30秒一条
+* 在edit dashbord中可以设置ping_average_response的最小时间间隔为30s
+    * Min interval = 30s
+
